@@ -59,7 +59,9 @@ php:
   git_repos:
     staging:
       paths:
-        - generated/php/google-cloud-spanner-admin-database-v1
+        - generated/php/gapic-google-cloud-spanner-admin-database-v1
+        - artifact: grpc
+          dest: generated/php/proto-google-cloud-spanner-admin-database-v1
 python:
   gapic_code_dir: ${REPOROOT}/artman/output/gapic-google-cloud-spanner-admin-database-v1
   git_repos:

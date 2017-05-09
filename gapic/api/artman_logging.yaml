@@ -62,7 +62,9 @@ php:
   git_repos:
     staging:
       paths:
-        - generated/php/google-cloud-logging-v2
+        - generated/php/gapic-google-cloud-logging-v2
+        - artifact: grpc
+          dest: generated/php/proto-google-cloud-logging-v2
 python:
   release_level: beta
   generated_package_version:

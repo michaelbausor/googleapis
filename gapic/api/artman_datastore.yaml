@@ -58,7 +58,9 @@ php:
   git_repos:
     staging:
       paths:
-        - generated/php/google-cloud-datastore-v1
+        - generated/php/gapic-google-cloud-datastore-v1
+        - artifact: grpc
+          dest: generated/php/proto-google-cloud-datastore-v1
 python:
   release_level: beta
   generated_package_version:

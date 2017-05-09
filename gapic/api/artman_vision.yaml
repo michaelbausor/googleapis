@@ -63,7 +63,9 @@ php:
   git_repos:
     staging:
       paths:
-        - generated/php/google-cloud-vision-v1
+        - generated/php/gapic-google-cloud-vision-v1
+        - artifact: grpc
+          dest: generated/php/proto-google-cloud-vision-v1
 python:
   release_level: beta
   generated_package_version:

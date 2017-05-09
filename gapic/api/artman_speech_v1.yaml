@@ -61,7 +61,9 @@ php:
   git_repos:
     staging:
       paths:
-        - generated/php/google-cloud-speech-v1
+        - generated/php/gapic-google-cloud-speech-v1
+        - artifact: grpc
+          dest: generated/php/proto-google-cloud-speech-v1
 python:
   gapic_code_dir: ${REPOROOT}/artman/output/gapic-google-cloud-speech-v1
   git_repos:
