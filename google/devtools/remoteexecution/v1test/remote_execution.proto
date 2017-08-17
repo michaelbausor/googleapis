@@ -22,6 +22,7 @@ import "google/protobuf/duration.proto";
 import "google/rpc/status.proto";
 
 option csharp_namespace = "Google.RemoteExecution.V1Test";
+option php_namespace = "Google\\RemoteExecution\\V1test";
 option go_package = "google.golang.org/genproto/googleapis/devtools/remoteexecution/v1test;remoteexecution";
 option java_multiple_files = true;
 option java_outer_classname = "RemoteExecutionProto";
