@@ -811,7 +811,9 @@ message RedactImageRequest {
   }
 
   // The parent resource name, for example projects/my-project-id.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.resource_reference) = {resource: "google.api.Project"}
+  ];
 
   // Configuration for the inspector.
   InspectConfig inspect_config = 2;
@@ -856,7 +858,9 @@ message RedactImageResponse {
 // Request to de-identify a list of items.
 message DeidentifyContentRequest {
   // The parent resource name, for example projects/my-project-id.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.resource_reference) = {resource: "google.api.Project"}
+  ];
 
   // Configuration for the de-identification of the content item.
   // Items specified here will override the template referenced by the
@@ -898,7 +902,9 @@ message DeidentifyContentResponse {
 // Request to re-identify an item.
 message ReidentifyContentRequest {
   // The parent resource name.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.resource_reference) = {resource: "google.api.Project"}
+  ];
 
   // Configuration for the re-identification of the content item.
   // This field shares the same proto message type that is used for
@@ -945,7 +951,9 @@ message ReidentifyContentResponse {
 // Request to search for potentially sensitive info in a ContentItem.
 message InspectContentRequest {
   // The parent resource name, for example projects/my-project-id.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.resource_reference) = {resource: "google.api.Project"}
+  ];
 
   // Configuration for the inspector. What specified here will override
   // the template referenced by the inspect_template_name argument.
@@ -2314,7 +2322,12 @@ message InspectTemplate {
   // The template will have one of the following formats:
   // `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
   // `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
-  string name = 1;
+  string name = 1 [
+    (google.api.resource) = {
+      pattern: "projects/{project}/inspectionTemplates/{inspect_template}"},
+    (google.api.resource) = {
+      pattern: "organizations/{organization}/inspectTemplates/{inspect_template}"}
+  ];
 
   // Display name (max 256 chars).
   string display_name = 2;
@@ -2340,7 +2353,12 @@ message DeidentifyTemplate {
   // The template will have one of the following formats:
   // `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
   // `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
-  string name = 1;
+  string name = 1 [
+    (google.api.resource) = {
+      pattern: "projects/{project}/deidentifyTemplates/{deidentify_template}"},
+    (google.api.resource) = {
+      pattern: "organizations/{organization}/deidentifyTemplates/{deidentify_template}"}
+  ];
 
   // Display name (max 256 chars).
   string display_name = 2;
@@ -2497,7 +2515,10 @@ message Action {
 message CreateInspectTemplateRequest {
   // The parent resource name, for example projects/my-project-id or
   // organizations/my-org-id.
-  string parent = 1;
+  string parent = 1 [
+    (google.api.resource_reference) = {
+      child_resource: "InspectTemplate"}
+  ];
 
   // The InspectTemplate to create.
   InspectTemplate inspect_template = 2;
@@ -2514,7 +2535,10 @@ message UpdateInspectTemplateRequest {
   // Resource name of organization and inspectTemplate to be updated, for
   // example `organizations/433245324/inspectTemplates/432452342` or
   // projects/project-id/inspectTemplates/432452342.
-  string name = 1;
+  string name = 1 [
+    (google.api.resource_reference) = {
+      resource: "InspectTemplate"}
+  ];
 
   // New InspectTemplate value.
   InspectTemplate inspect_template = 2;
