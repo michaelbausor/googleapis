@@ -1,0 +1,20 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', '.cloudbuild/Dockerfile.bazel-zip', '-t', 'bazel-zip', '.']
+- name: 'bazel-zip'
+  args:
+  - 'build'
+  - '//google/cloud/language/v1:gapi-cloud-language-v1-go'
+  - '//google/cloud/language/v1:google-cloud-language-v1-java'
+  - '//google/cloud/language/v1:google-cloud-language-v1-php'
+  - '//google/cloud/vision/v1:gapi-cloud-vision-v1-go'
+  - '//google/cloud/vision/v1:google-cloud-vision-v1-java'
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', 'bazel-bin/google', 'gs://cloudbuild-gapic-test-01/$PROJECT_ID/$COMMIT_SHA/google']
+artifacts:
+  objects:
+    location: 'gs://cloudbuild-gapic-test-01/$PROJECT_ID/$COMMIT_SHA/'
+    paths:
+    - '.cloudbuild/cloudbuild.yaml'
+options:
+ machineType: 'N1_HIGHCPU_32'
