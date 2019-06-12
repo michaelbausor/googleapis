@@ -12,7 +12,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['-m', 'cp', '-r', 'bazel-bin/google', 'gs://$PROJECT_ID-cloud-build-artifacts/$REPO_NAME/$COMMIT_SHA/google']
 - name: 'ubuntu'
-  args: ['bash', './cloudbuild/write-latest.sh', '$COMMIT_SHA']
+  args: ['bash', './.cloudbuild/write-latest.sh', '$COMMIT_SHA']
 artifacts:
   objects:
     location: 'gs://$PROJECT_ID-cloud-build-artifacts/$REPO_NAME/'
