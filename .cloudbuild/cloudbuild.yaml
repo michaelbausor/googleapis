@@ -10,13 +10,15 @@ steps:
   - '//google/cloud/vision/v1:gapi-cloud-vision-v1-go'
   - '//google/cloud/vision/v1:google-cloud-vision-v1-java'
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['-m', 'cp', '-r', 'bazel-bin/google', 'gs://$PROJECT_ID-cloud-build-artifacts/$REPO_NAME/$COMMIT_SHA/google']
+  args: ['-m', 'cp', '-r', 'bazel-bin/google', '$_GS_BUCKET_URI/$COMMIT_SHA/google']
 - name: 'ubuntu'
   args: ['bash', './.cloudbuild/write-latest.sh', '$COMMIT_SHA']
 artifacts:
   objects:
-    location: 'gs://$PROJECT_ID-cloud-build-artifacts/$REPO_NAME/'
+    location: '$_GS_BUCKET_URI/'
     paths:
     - 'cloud_build_latest'
+substitutions:
+  _GS_BUCKET_URI: 'gs://$PROJECT_ID-cloud-build-artifacts/$REPO_NAME'
 options:
  machineType: 'N1_HIGHCPU_32'
