@@ -1,0 +1,12 @@
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar")
+
+pkg_tar(
+    name = 'gapic-cloud-build',
+    deps = [
+        '//google/cloud/language/v1:gapi-cloud-language-v1-go',
+        '//google/cloud/language/v1:google-cloud-language-v1-java',
+        '//google/cloud/language/v1:google-cloud-language-v1-php',
+        '//google/cloud/vision/v1:gapi-cloud-vision-v1-go',
+        '//google/cloud/vision/v1:google-cloud-vision-v1-java',
+    ]
+)
