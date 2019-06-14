@@ -8,5 +8,7 @@ pkg_tar(
         '//google/cloud/language/v1:google-cloud-language-v1-php',
         '//google/cloud/vision/v1:gapi-cloud-vision-v1-go',
         '//google/cloud/vision/v1:google-cloud-vision-v1-java',
+        '//google/container/v1:gapi-cloud-container-v1-go',
+        '//google/container/v1:google-cloud-container-v1-java',
     ]
 )
